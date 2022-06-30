@@ -1,0 +1,259 @@
+################################################################################
+# Fichier de test des routes HTTP de l'API                                     #
+# Nécessite l'extension REST Client pour VSCode                                #
+# https://marketplace.visualstudio.com/items?itemName=humao.rest-client        #
+################################################################################
+
+### Test de la route introuvale
+GET http://localhost:4000/sqdqsd
+
+#########################
+#         BEER          #
+#########################
+
+### Test de la route pour trouver toutes les bières
+GET http://localhost:4000/beer
+
+### Test de la route pour trouver toutes les bières
+GET http://localhost:4000/beer/topBeers
+
+### Test de la route pour ajouter une bière
+POST http://localhost:4000/beer
+content-type: application/json
+authorization: jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJhbGlhcyI6InN0ZXBoYW5lNTQiLCJkYXRlX29mX2JpcnRoIjoiMTk4Ny0wNS0wNVQyMjowMDowMC4wMDBaIiwiZW1haWwiOiJqYW5zb25zdGVwaGFuZUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRacnNJOHBReXhURElIMUVuUUNMME11Q091ZEpyc2FSd3E4dEgzQlhsRVhuby5jNGdEajBiVyIsInJvbGVfaWQiOjIsImNyZWF0ZWRfYXQiOiIyMDIyLTA2LTI1VDE2OjI4OjI2Ljc2NVoiLCJ1cGRhdGVkX2F0IjpudWxsfSwiaWF0IjoxNjU2MzE0NDE3LCJleHAiOjE2NTYzMTQ1MDN9.TbMJtxS9dQy7hI0t0j2upQQuLyxbWDmz2KMQ7eqpYv
+
+{
+    "name": "ouLaouPr544hh414r56",
+    "description": "description test",
+    "alcohol_level": 9.5,
+    "country_id": "Japon45",
+    "style_id": "ipa",
+    "color_id": "blonde",
+    "brewery_id": "Hinano45",
+    "user_account_id": 1
+}
+
+### Test de la route pour trouver une bière
+GET http://localhost:4000/beer/22
+
+### Test de la route pour modifier une bière
+PATCH http://localhost:4000/beer/42
+content-type: application/json
+
+{
+    "name": "oulaoup54",
+    "description": "description test",
+    "alcohol_level": 9.5,
+    "country_id": "Japon545",
+    "style_id": "ipa",
+    "color_id": "blonde",
+    "brewery_id": "Hinano45",
+    "user_account_id": 1
+}
+
+### Test de la route pour supprimer une bière
+DELETE http://localhost:4000/beer/1
+authorization: jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo2LCJhbGlhcyI6ImFsaWFzYmlkb24zIiwiZGF0ZV9vZl9iaXJ0aCI6IjE5NjYtMDUtMDVUMjM6MDA6MDAuMDAwWiIsImVtYWlsIjoiYmlkb24zQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJDV5ZEE3dWlrS0xlckx3VTA4eUE2ZmVGWUp3My55TW1QVWNWZkdtaXVYOGtmMzV2SXZHNWkyIiwicm9sZV9pZCI6MSwiY3JlYXRlZF9hdCI6IjIwMjItMDYtMjRUMTU6MTc6NTYuOTI4WiIsInVwZGF0ZWRfYXQiOm51bGx9LCJpYXQiOjE2NTYwODQ1OTgsImV4cCI6MTY1NjA4NDY4NH0.0L1uMMV-PmlNFLUJpHvk4lDsouoXx9G0i_t8vCBZUqQ
+
+#########################
+#         USER          #
+#########################
+
+### Test de la route pour trouver tout les utilisateurs
+GET http://localhost:4000/user
+
+### Test de la route pour ajouter une bière, le role_id n'est pas obligatoire(1 par défaut)
+POST http://localhost:4000/user
+content-type: application/json
+
+{
+    "alias": "aliasbidon3",
+    "date_of_birth": "06/05/1966",
+    "email": "bidon3@gmail.com",
+    "password": "motDepassebidon54",
+    "confirmPassword": "motDepassebidon54"
+}
+
+### Test de la route pour trouver un utilisateur
+GET http://localhost:4000/user/2
+
+### Test de la route pour supprimer un utilisateur
+DELETE http://localhost:4000/user/5
+
+### Test de la route pour trouver les reviews d'un utilisateur
+GET http://localhost:4000/user/1/review
+
+#########################
+#         ARTICLE       #
+#########################
+
+### Test de la route pour trouver tout les articles
+GET http://localhost:4000/article
+
+### Test de la route pour créer un article
+POST http://localhost:4000/article
+content-type: application/json
+authorization: jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJhbGlhcyI6InN0ZXBoYW5lNTQiLCJkYXRlX29mX2JpcnRoIjoiMTk4Ny0wNS0wNVQyMjowMDowMC4wMDBaIiwiZW1haWwiOiJqYW5zb25zdGVwaGFuZUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRacnNJOHBReXhURElIMUVuUUNMME11Q091ZEpyc2FSd3E4dEgzQlhsRVhuby5jNGdEajBiVyIsInJvbGVfaWQiOjIsImNyZWF0ZWRfYXQiOiIyMDIyLTA2LTI4VDExOjQ4OjAwLjExNloiLCJ1cGRhdGVkX2F0IjpudWxsfSwiaWF0IjoxNjU2NDE3NTA4LCJleHAiOjE2NTY0MTc1OTR9.jn8Iq41gsJwJ20tahRs0JjHHPIq800yX8rc1hUerQjQ
+
+{
+    "title": "titre bidon",
+    "content": "Ceci est un article bidon pour faire un essai",
+    "beer_id": "8.6",
+    "user_account_id":1
+}
+
+### Test de la route pour trouver un article
+GET http://localhost:4000/article/1
+
+### Test de la route pour modifier un article
+PATCH http://localhost:4000/article/3
+content-type: application/json
+authorization: jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJhbGlhcyI6InN0ZXBoYW5lNTQiLCJkYXRlX29mX2JpcnRoIjoiMTk4Ny0wNS0wNVQyMjowMDowMC4wMDBaIiwiZW1haWwiOiJqYW5zb25zdGVwaGFuZUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRacnNJOHBReXhURElIMUVuUUNMME11Q091ZEpyc2FSd3E4dEgzQlhsRVhuby5jNGdEajBiVyIsInJvbGVfaWQiOjIsImNyZWF0ZWRfYXQiOiIyMDIyLTA2LTI1VDE2OjI4OjI2Ljc2NVoiLCJ1cGRhdGVkX2F0IjpudWxsfSwiaWF0IjoxNjU2MzE3ODA2LCJleHAiOjE2NTYzMTc4OTJ9.RqZyOVFsjvuzLsBwcuD_I0-1qlxrMumvNli_cQTL3yc
+
+{
+    "title": "whaouuuu",
+    "content": "Ceci est un article bidon pour faire un essai",
+    "beer_id": 4,
+    "user_account_id":2
+}
+
+### Test de la route pour supprimer un article
+DELETE http://localhost:4000/article/1
+
+#########################
+#         REVIEW        #
+#########################
+
+### Test de la route pour trouver toutes les reviews
+GET http://localhost:4000/review
+
+### Test de la route pour créer une review
+POST http://localhost:4000/review
+content-type: application/json
+authorization: jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJhbGlhcyI6InN0ZXBoYW5lNTQiLCJkYXRlX29mX2JpcnRoIjoiMTk4Ny0wNS0wNVQyMjowMDowMC4wMDBaIiwiZW1haWwiOiJqYW5zb25zdGVwaGFuZUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRacnNJOHBReXhURElIMUVuUUNMME11Q091ZEpyc2FSd3E4dEgzQlhsRVhuby5jNGdEajBiVyIsInJvbGVfaWQiOjIsImNyZWF0ZWRfYXQiOiIyMDIyLTA2LTI1VDE2OjI4OjI2Ljc2NVoiLCJ1cGRhdGVkX2F0IjpudWxsfSwiaWF0IjoxNjU2MzE0NjY3LCJleHAiOjE2NTYzMTQ3NTN9.CoogxoXK02XRF7j5uNNyUH7XKFPsc9EO2-i8gjr09N8
+
+{
+    "content": "top1!",
+    "note": 4.5,
+    "beer_id": 2,
+    "user_account_id":1
+}
+
+### Test de la route pour trouver une review
+GET http://localhost:4000/review/1
+
+### Test de la route pour modifier une review
+PATCH http://localhost:4000/review/1
+content-type: application/json
+authorization: jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjo1LCJhbGlhcyI6ImFsaWFzYmlkb24zIiwiZGF0ZV9vZl9iaXJ0aCI6IjE5NjYtMDUtMDVUMjM6MDA6MDAuMDAwWiIsImVtYWlsIjoiYmlkb24zQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJERTVHRRRE14dUFwNG4wN2RyY2xhRHVhZi8wMUZpQlFsR2twTm9JMjZlbkJKNFlULy9Wdi51Iiwicm9sZV9pZCI6MSwiY3JlYXRlZF9hdCI6IjIwMjItMDYtMjdUMDg6Mjc6MDIuMTE0WiIsInVwZGF0ZWRfYXQiOm51bGx9LCJpYXQiOjE2NTYzMTg0MzcsImV4cCI6MTY1NjMxODUyM30.fk_NYV8nQjVODWS7gj5z9hmWS0z7xAqEdFnnxcQs5xE
+
+{
+    "content": "trop bon",
+    "note": 4.5,
+    "beer_id": 3,
+    "user_account_id":3
+}
+
+### Test de la route pour supprimer une review
+DELETE http://localhost:4000/review/15
+authorization: jwt eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJhbGlhcyI6InN0ZXBoYW5lNTQiLCJkYXRlX29mX2JpcnRoIjoiMTk4Ny0wNS0wNVQyMjowMDowMC4wMDBaIiwiZW1haWwiOiJqYW5zb25zdGVwaGFuZUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRacnNJOHBReXhURElIMUVuUUNMME11Q091ZEpyc2FSd3E4dEgzQlhsRVhuby5jNGdEajBiVyIsInJvbGVfaWQiOjIsImNyZWF0ZWRfYXQiOiIyMDIyLTA2LTI1VDE2OjI4OjI2Ljc2NVoiLCJ1cGRhdGVkX2F0IjpudWxsfSwiaWF0IjoxNjU2MzE4MzE0LCJleHAiOjE2NTYzMTg0MDB9.i4hCOurURHKxyoszkuoVotgBBLomycCEnfJ23E45CEU
+
+#########################
+#           AUTH        #
+#########################
+
+### Test de la route pour se loger
+POST http://localhost:4000/login
+content-type: application/json
+
+{
+    "email": "bidon3@gmail.com",
+    "password": "motDepassebidon54"
+}
+
+### Test de la route pour se déconnecter
+POST http://localhost:4000/logout
+content-type: application/json
+
+{
+    "email": "test@gmail.com",
+    "password": "ceciestunmotdepassebidon"
+}
+
+#########################
+#           COLOR       #
+#########################
+
+### Test de la route pour trouver toutes les couleurs
+GET http://localhost:4000/color
+
+### Test de la route pour trouver une couleur
+GET http://localhost:4000/color/1
+
+#########################
+#           STYLE       #
+#########################
+
+### Test de la route pour trouver tout les styles
+GET http://localhost:4000/style
+
+### Test de la route pour trouver un style
+GET http://localhost:4000/style/1
+
+#########################
+#           BREWERY     #
+#########################
+
+### Test de la route pour trouver toutes les brasseries
+GET http://localhost:4000/brewery
+
+### Test de la route pour créer une brasserie
+POST http://localhost:4000/brewery
+content-type: application/json
+
+{
+    "name": "Brasserie fictive4"
+}
+
+### Test de la route pour trouver une brasserie
+GET http://localhost:4000/brewery/5
+
+### Test de la route pour modifier une brasserie
+PATCH http://localhost:4000/brewery/29
+content-type: application/json
+
+{
+    "name": "Brasserie fictive"
+}
+
+### Test de la route pour supprimer une brasserie
+DELETE http://localhost:4000/brewery/2
+
+#########################
+#           COUNTRY     #
+#########################
+
+### Test de la route pour trouver tout les pays
+GET http://localhost:4000/country
+
+### Test de la route pour créer un pays
+POST http://localhost:4000/country
+content-type: application/json
+
+{
+    "name": "Pays imaginaire"
+}
+
+### Test de la route pour trouver un pays
+GET http://localhost:4000/country/26
+
+### Test de la route pour modifier un pays
+PATCH http://localhost:4000/country/5
+content-type: application/json
+
+{
+    "name": "GuiL"
+}
+
+### Test de la route pour supprimer un pays
+DELETE http://localhost:4000/country/2

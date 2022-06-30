@@ -1,0 +1,5 @@
+%syntax-version=1.0.0
+%project=bibino
+
+init 2022-06-29T13:00:33Z Etudiant O'clock <student@teleporter> # Creation of the main tables
+seeding 2022-06-29T13:00:41Z Etudiant O'clock <student@teleporter> # add seeding

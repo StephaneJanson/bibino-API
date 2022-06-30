@@ -1,0 +1,23 @@
+POSSEDE, 1N COULEUR, 11 BIERE
+PROVIENT, 1N PAYS, 11 BIERE
+PAYS: code_pays, nom
+FABRIQUER, 1N BRASSERIE, 11 BIERE
+BRASSERIE: code_brasserie, nom
+
+COULEUR: code_couleur, nom
+BIERE: code_biere, nom, description, taux d'alcool
+CITER, 01 ARTICLE, 0N BIERE
+ARTICLE: code_article, titre, contenu, date
+:
+
+AVOIR, 1N STYLE, 11 BIERE
+LIER, 0N BIERE, 11 COMMENTAIRE
+DF, 11 BIERE, 0N UTILISATEUR
+REDIGER, 0N UTILISATEUR, 11 ARTICLE
+ROLE: code_role, nom
+
+STYLE: code_style, nom
+COMMENTAIRE: code_commentaire, contenu, note
+ECRIRE, 0N UTILISATEUR, 11 COMMENTAIRE
+UTILISATEUR: code_utilisateur, pseudo, date de naissance, email, password
+ETRE, 11 UTILISATEUR, 0N ROLE
